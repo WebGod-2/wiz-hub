@@ -80,12 +80,13 @@ const Home = () => {
             </div>
             
             <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base">
-              <a href="#" className="text-yellow-600 font-semibold">Home</a>
-              <a href="#" className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</a>
-              <a href="#" className="text-gray-300 hover:text-yellow-600 transition-colors">My Clan</a>
-              <a href="#" className="text-gray-300 hover:text-yellow-600 transition-colors">Challenges</a>
-              <a href="#" className="text-gray-300 hover:text-yellow-600 transition-colors">Leaderboard</a>
-              <a href="#" className="text-gray-300 hover:text-yellow-600 transition-colors">Library</a>
+              <button className="text-yellow-600 font-semibold">Home</button>
+              <button onClick={() => navigate('/subjects')} className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</button>
+              <button className="text-gray-300 hover:text-yellow-600 transition-colors">My Clan</button>
+              <button className="text-gray-300 hover:text-yellow-600 transition-colors">Challenges</button>
+              <button className="text-gray-300 hover:text-yellow-600 transition-colors">Leaderboard</button>
+              <button className="text-gray-300 hover:text-yellow-600 transition-colors">Library</button>
+              <button onClick={() => navigate('/profile')} className="text-gray-300 hover:text-yellow-600 transition-colors">Profile</button>
             </nav>
           </div>
           
