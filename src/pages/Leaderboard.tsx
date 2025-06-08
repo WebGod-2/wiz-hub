@@ -1,63 +1,31 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Star, LogOut } from 'lucide-react';
+import { Star, LogOut, Trophy, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { RootState } from '../store';
 import { logout } from '../store/authSlice';
 
-const Subjects = () => {
+const Leaderboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
+  const [activeTab, setActiveTab] = useState('Class');
 
   const handleLogout = () => {
     dispatch(logout());
     navigate('/');
   };
 
-  const subjects = [
-    {
-      title: 'UPSC',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Engineering',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Medical',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Human Resource Management',
-      description: 'Learn um your',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Data Science',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Cybersecurity',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Business',
-      description: 'Learn um your',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Marketing',
-      description: 'Learn um your',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
-    }
+  const leaderboardData = [
+    { rank: 1, name: 'James Smith', points: '2540 XP', icon: Trophy },
+    { rank: 2, name: 'Emma Johnson', points: '2300 XP', icon: Award },
+    { rank: 3, name: 'Olivia Williams', points: '2190 XP' },
+    { rank: 4, name: 'Janes Acaga', points: '1925 XP' },
+    { rank: 5, name: 'Sazana Garier', points: '1780 XP' },
+    { rank: 6, name: 'Eden Rinekhur', points: '1650 XP' },
+    { rank: 7, name: 'Marina Janssen', points: '1540 XP' }
   ];
 
   return (
@@ -84,10 +52,10 @@ const Subjects = () => {
             
             <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base">
               <button onClick={() => navigate('/home')} className="text-gray-300 hover:text-yellow-600 transition-colors">Home</button>
-              <button className="text-yellow-600 font-semibold">Subjects</button>
+              <button onClick={() => navigate('/subjects')} className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</button>
               <button onClick={() => navigate('/clans')} className="text-gray-300 hover:text-yellow-600 transition-colors">Clans</button>
               <button onClick={() => navigate('/challenges')} className="text-gray-300 hover:text-yellow-600 transition-colors">Challenges</button>
-              <button onClick={() => navigate('/leaderboard')} className="text-gray-300 hover:text-yellow-600 transition-colors">Leaderboard</button>
+              <button className="text-yellow-600 font-semibold">Leaderboard</button>
               <button onClick={() => navigate('/library')} className="text-gray-300 hover:text-yellow-600 transition-colors">Library</button>
               <button onClick={() => navigate('/profile')} className="text-gray-300 hover:text-yellow-600 transition-colors">Profile</button>
             </nav>
@@ -112,28 +80,47 @@ const Subjects = () => {
 
       {/* Main Content */}
       <main className="relative z-10 p-4 md:p-6">
-        <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-8 md:mb-12">Subjects</h1>
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-8">Leaderboard</h1>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {subjects.map((subject, index) => (
-              <div key={index} className="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-yellow-600/50 transition-all duration-300 group">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 rounded-lg mb-4 overflow-hidden border border-yellow-600/30 group-hover:border-yellow-600 transition-colors">
-                    <img 
-                      src={subject.image} 
-                      alt={subject.title}
-                      className="w-full h-full object-cover"
-                    />
+          {/* Tabs */}
+          <div className="flex gap-4 mb-8">
+            <Button 
+              onClick={() => setActiveTab('Class')}
+              className={`px-8 py-3 ${activeTab === 'Class' ? 'bg-yellow-600 text-black' : 'bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black'} transition-all duration-300`}
+            >
+              Class
+            </Button>
+            <Button 
+              onClick={() => setActiveTab('Overall')}
+              className={`px-8 py-3 ${activeTab === 'Overall' ? 'bg-yellow-600 text-black' : 'bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black'} transition-all duration-300`}
+            >
+              Overall
+            </Button>
+          </div>
+
+          {/* Leaderboard List */}
+          <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-xl p-6">
+            <div className="space-y-4">
+              {leaderboardData.map((item, index) => {
+                const IconComponent = item.icon;
+                return (
+                  <div key={index} className="flex items-center justify-between p-4 border-b border-gray-700 last:border-b-0">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 flex justify-center">
+                        {IconComponent ? (
+                          <IconComponent className={`w-6 h-6 ${item.rank === 1 ? 'text-yellow-500' : 'text-gray-400'}`} />
+                        ) : (
+                          <span className="text-gray-400 text-lg font-bold">{item.rank}</span>
+                        )}
+                      </div>
+                      <span className="text-white text-lg font-medium">{item.name}</span>
+                    </div>
+                    <span className="text-white text-lg font-bold">{item.points}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{subject.title}</h3>
-                  <p className="text-gray-400 text-sm mb-4">{subject.description}</p>
-                  <Button className="w-full bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black transition-all duration-300">
-                    Enroll
-                  </Button>
-                </div>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
         </div>
       </main>
@@ -141,4 +128,4 @@ const Subjects = () => {
   );
 };
 
-export default Subjects;
+export default Leaderboard;

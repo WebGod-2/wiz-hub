@@ -30,12 +30,12 @@ const Profile = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
         style={{
-          backgroundImage: "url('/lovable-uploads/42ee77d6-a65b-4ae2-bf06-d09090895e66.png')"
+          backgroundImage: "url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1920&h=1080&fit=crop')"
         }}
       />
       
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/70" />
 
       {/* Header */}
       <header className="relative z-10 p-4 md:p-6 border-b border-gray-800/50">
@@ -49,8 +49,10 @@ const Profile = () => {
             <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base">
               <button onClick={() => navigate('/home')} className="text-gray-300 hover:text-yellow-600 transition-colors">Home</button>
               <button onClick={() => navigate('/subjects')} className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</button>
-              <button className="text-gray-300 hover:text-yellow-600 transition-colors">Clans</button>
-              <button className="text-gray-300 hover:text-yellow-600 transition-colors">Challenges</button>
+              <button onClick={() => navigate('/clans')} className="text-gray-300 hover:text-yellow-600 transition-colors">Clans</button>
+              <button onClick={() => navigate('/challenges')} className="text-gray-300 hover:text-yellow-600 transition-colors">Challenges</button>
+              <button onClick={() => navigate('/leaderboard')} className="text-gray-300 hover:text-yellow-600 transition-colors">Leaderboard</button>
+              <button onClick={() => navigate('/library')} className="text-gray-300 hover:text-yellow-600 transition-colors">Library</button>
               <button className="text-yellow-600 font-semibold">Profile</button>
             </nav>
           </div>

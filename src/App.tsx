@@ -13,6 +13,9 @@ import Home from "./pages/Home";
 import Subjects from "./pages/Subjects";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
+import MyClan from "./pages/MyClan";
+import Leaderboard from "./pages/Leaderboard";
+import Library from "./pages/Library";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
             <Route path="/subjects" element={<Subjects />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/clans" element={<MyClan />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/library" element={<Library />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

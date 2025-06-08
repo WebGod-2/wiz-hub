@@ -2,12 +2,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Star, LogOut } from 'lucide-react';
+import { Star, LogOut, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { RootState } from '../store';
 import { logout } from '../store/authSlice';
 
-const Subjects = () => {
+const Library = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
@@ -17,47 +17,26 @@ const Subjects = () => {
     navigate('/');
   };
 
-  const subjects = [
+  const resources = [
     {
-      title: 'UPSC',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
+      title: 'Spellcrafting',
+      description: 'Learn the theory and casting of spells'
     },
     {
-      title: 'Engineering',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
+      title: 'Transfiguration',
+      description: 'Study the art of changing the form of objects'
     },
     {
-      title: 'Medical',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Human Resource Management',
-      description: 'Learn um your',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Data Science',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Cybersecurity',
-      description: 'Learn um your personal AI tutor',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Business',
-      description: 'Learn um your',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      title: 'Marketing',
-      description: 'Learn um your',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
+      title: 'Muggle Studies',
+      description: 'Explore the customs of the non-magical world'
     }
+  ];
+
+  const chapters = [
+    'Basics of Spellcasting',
+    'Wand Movements',
+    'Incantations',
+    'Magical Focus'
   ];
 
   return (
@@ -84,11 +63,11 @@ const Subjects = () => {
             
             <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base">
               <button onClick={() => navigate('/home')} className="text-gray-300 hover:text-yellow-600 transition-colors">Home</button>
-              <button className="text-yellow-600 font-semibold">Subjects</button>
+              <button onClick={() => navigate('/subjects')} className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</button>
               <button onClick={() => navigate('/clans')} className="text-gray-300 hover:text-yellow-600 transition-colors">Clans</button>
               <button onClick={() => navigate('/challenges')} className="text-gray-300 hover:text-yellow-600 transition-colors">Challenges</button>
               <button onClick={() => navigate('/leaderboard')} className="text-gray-300 hover:text-yellow-600 transition-colors">Leaderboard</button>
-              <button onClick={() => navigate('/library')} className="text-gray-300 hover:text-yellow-600 transition-colors">Library</button>
+              <button className="text-yellow-600 font-semibold">Library</button>
               <button onClick={() => navigate('/profile')} className="text-gray-300 hover:text-yellow-600 transition-colors">Profile</button>
             </nav>
           </div>
@@ -113,27 +92,47 @@ const Subjects = () => {
       {/* Main Content */}
       <main className="relative z-10 p-4 md:p-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-8 md:mb-12">Subjects</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-8">Resources</h1>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            {subjects.map((subject, index) => (
-              <div key={index} className="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-yellow-600/50 transition-all duration-300 group">
+          {/* Resources Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {resources.map((resource, index) => (
+              <div key={index} className="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:border-yellow-600/50 transition-all duration-300 cursor-pointer group">
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 rounded-lg mb-4 overflow-hidden border border-yellow-600/30 group-hover:border-yellow-600 transition-colors">
-                    <img 
-                      src={subject.image} 
-                      alt={subject.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{subject.title}</h3>
-                  <p className="text-gray-400 text-sm mb-4">{subject.description}</p>
-                  <Button className="w-full bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black transition-all duration-300">
-                    Enroll
-                  </Button>
+                  <BookOpen className="w-12 h-12 text-yellow-600 mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-2xl font-bold text-yellow-600 mb-3">{resource.title}</h3>
+                  <p className="text-gray-300 text-sm">{resource.description}</p>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Spellcrafting Section */}
+          <div className="mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-6">Spellcrafting</h2>
+            
+            <div className="mb-6">
+              <h3 className="text-xl font-semibold text-white mb-4">Chapters</h3>
+              <div className="space-y-3">
+                {chapters.map((chapter, index) => (
+                  <div key={index} className="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-lg p-4 hover:border-yellow-600/50 transition-all duration-300 cursor-pointer">
+                    <h4 className="text-lg font-medium text-white">{chapter}</h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Basics of Spellcasting Section */}
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-yellow-600 mb-6">Basics of Spellcasting</h2>
+            
+            <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700 rounded-xl p-6">
+              <h3 className="text-2xl font-bold text-yellow-600 mb-4">Introduction to Spellcasting</h3>
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Spellcasting is the art of using gestures and incantations to achieve magical effects. This fundamental skill forms the backbone of all magical practice and requires dedication, precision, and understanding of magical theory.
+              </p>
+            </div>
           </div>
         </div>
       </main>
@@ -141,4 +140,4 @@ const Subjects = () => {
   );
 };
 
-export default Subjects;
+export default Library;
