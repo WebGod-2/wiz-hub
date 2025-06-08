@@ -15,11 +15,18 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    
     setIsLoading(true);
     dispatch(setLoading(true));
 
@@ -27,7 +34,7 @@ const Signup = () => {
     setTimeout(() => {
       dispatch(loginSuccess({ name, email }));
       setIsLoading(false);
-      navigate('/dashboard');
+      navigate('/home');
     }, 2000);
   };
 
@@ -39,9 +46,9 @@ const Signup = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center px-6">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-30"></div>
-        <div className="absolute top-40 left-20 w-1 h-1 bg-yellow-300 rounded-full animate-ping opacity-40" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 right-20 w-1.5 h-1.5 bg-yellow-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-30"></div>
+        <div className="absolute top-40 right-20 w-1 h-1 bg-yellow-300 rounded-full animate-ping opacity-40" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-40 left-20 w-1.5 h-1.5 bg-yellow-500 rounded-full animate-ping opacity-50" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="w-full max-w-md relative z-10">
@@ -59,14 +66,14 @@ const Signup = () => {
           <form onSubmit={handleSignup} className="space-y-6">
             <div>
               <Label htmlFor="name" className="text-gray-300 mb-2 block">
-                Name
+                Full Name
               </Label>
               <Input
                 id="name"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Enter your name"
+                placeholder="Enter your full name"
                 className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-600 focus:ring-yellow-600"
                 required
               />
@@ -111,11 +118,35 @@ const Signup = () => {
               </div>
             </div>
 
+            <div>
+              <Label htmlFor="confirmPassword" className="text-gray-300 mb-2 block">
+                Confirm Password
+              </Label>
+              <div className="relative">
+                <Input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm your password"
+                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-600 focus:ring-yellow-600 pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-yellow-600 transition-colors"
+                >
+                  {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
+            </div>
+
             <Button
               type="submit"
               className="w-full bg-yellow-600 text-black hover:bg-yellow-700 transition-all duration-300 text-lg py-6 font-bold"
             >
-              Sign up
+              Sign Up
             </Button>
           </form>
 
@@ -127,7 +158,7 @@ const Signup = () => {
                 onClick={() => navigate('/login')}
                 className="text-yellow-600 hover:text-yellow-500 transition-colors font-semibold"
               >
-                Log in
+                Log In
               </button>
             </p>
           </div>

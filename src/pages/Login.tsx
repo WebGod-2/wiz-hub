@@ -26,7 +26,7 @@ const Login = () => {
     setTimeout(() => {
       dispatch(loginSuccess({ name: 'Student', email }));
       setIsLoading(false);
-      navigate('/dashboard');
+      navigate('/home');
     }, 2000);
   };
 
