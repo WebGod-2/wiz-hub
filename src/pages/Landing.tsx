@@ -3,13 +3,33 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, ClipboardCheck, Swords, Star } from 'lucide-react';
 import FeatureCard from '../components/FeatureCard';
+import TypewriterEffect from '../components/TypewriterEffect';
 import { Button } from '@/components/ui/button';
 
 const Landing = () => {
   const navigate = useNavigate();
 
+  const typewriterTexts = [
+    "Learn at your own pace and achieve your goals.",
+    "Master any subject with AI-powered tutoring.",
+    "Unlock your potential with personalized learning.",
+    "Transform your knowledge with magical education.",
+    "Discover the future of intelligent learning."
+  ];
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative">
+      {/* Background Image Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80')"
+        }}
+      />
+      
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60" />
+
       {/* Header */}
       <header className="absolute top-0 left-0 right-0 z-40 p-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -37,7 +57,7 @@ const Landing = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center text-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center text-center px-6 z-10">
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-70"></div>
@@ -61,9 +81,9 @@ const Landing = () => {
             <span className="text-gray-300">with Personal AI Tutors</span>
           </h2>
           
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Learn at your own pace and achieve your goals.
-          </p>
+          <div className="mb-12 max-w-3xl mx-auto min-h-[80px] flex items-center justify-center">
+            <TypewriterEffect texts={typewriterTexts} speed={80} pauseTime={3000} />
+          </div>
           
           <Button
             onClick={() => navigate('/signup')}
@@ -76,7 +96,7 @@ const Landing = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <FeatureCard
@@ -99,7 +119,7 @@ const Landing = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 text-center">
+      <section className="py-20 px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Begin Your Magical Learning Journey?
@@ -118,7 +138,7 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-800">
+      <footer className="py-8 px-6 border-t border-gray-800 relative z-10">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <Star className="w-6 h-6 text-yellow-600" />
