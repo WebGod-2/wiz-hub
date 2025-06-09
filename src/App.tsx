@@ -16,6 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import MyClan from "./pages/MyClan";
 import Leaderboard from "./pages/Leaderboard";
 import Library from "./pages/Library";
+import Challenges from "./pages/Challenges";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/clans" element={<MyClan />} />
+            <Route path="/challenges" element={<Challenges />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/library" element={<Library />} />
             <Route path="*" element={<NotFound />} />
