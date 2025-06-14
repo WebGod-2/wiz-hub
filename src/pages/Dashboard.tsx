@@ -18,20 +18,20 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 font-inter">
       <header className="p-6 border-b border-gray-800">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Star className="w-8 h-8 text-yellow-600" />
-            <span className="text-2xl font-bold text-yellow-600">WizLearn</span>
+            <span className="text-2xl font-bold text-yellow-600 font-cinzel">WizLearn</span>
           </div>
           
           <div className="flex items-center space-x-4">
-            <span className="text-gray-300">Welcome, {user?.name}!</span>
+            <span className="text-gray-300 font-inter">Welcome, {user?.name}!</span>
             <Button
               onClick={handleLogout}
               variant="outline"
-              className="border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black transition-all duration-300"
+              className="border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black transition-all duration-300 font-inter"
             >
               <LogOut className="w-4 h-4 mr-2" />
               Logout
@@ -43,10 +43,10 @@ const Dashboard = () => {
       <main className="p-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center py-20">
-            <h1 className="text-4xl font-bold text-white mb-4">
+            <h1 className="text-4xl font-bold text-white mb-4 font-cinzel">
               Welcome to Your Dashboard!
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-300 font-inter">
               Your magical learning journey begins here.
             </p>
           </div>

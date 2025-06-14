@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -35,7 +34,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center px-6 font-inter">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping opacity-30"></div>
@@ -50,14 +49,14 @@ const Login = () => {
             <div className="flex items-center justify-center mb-4">
               <Star className="w-10 h-10 text-yellow-600" />
             </div>
-            <h1 className="text-3xl font-bold text-yellow-600 mb-2">WizLearn</h1>
-            <h2 className="text-2xl font-bold text-white">Login</h2>
+            <h1 className="text-3xl font-bold text-yellow-600 mb-2 font-cinzel">WizLearn</h1>
+            <h2 className="text-2xl font-bold text-white font-cinzel">Login</h2>
           </div>
 
           {/* Form */}
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <Label htmlFor="email" className="text-gray-300 mb-2 block">
+              <Label htmlFor="email" className="text-gray-300 mb-2 block font-inter">
                 Email
               </Label>
               <Input
@@ -66,13 +65,13 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-600 focus:ring-yellow-600"
+                className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-600 focus:ring-yellow-600 font-inter"
                 required
               />
             </div>
 
             <div>
-              <Label htmlFor="password" className="text-gray-300 mb-2 block">
+              <Label htmlFor="password" className="text-gray-300 mb-2 block font-inter">
                 Password
               </Label>
               <div className="relative">
@@ -82,7 +81,7 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-600 focus:ring-yellow-600 pr-10"
+                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 focus:border-yellow-600 focus:ring-yellow-600 pr-10 font-inter"
                   required
                 />
                 <button
@@ -97,7 +96,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="w-full bg-yellow-600 text-black hover:bg-yellow-700 transition-all duration-300 text-lg py-6 font-bold"
+              className="w-full bg-yellow-600 text-black hover:bg-yellow-700 transition-all duration-300 text-lg py-6 font-bold font-inter"
             >
               Log in
             </Button>
@@ -105,7 +104,7 @@ const Login = () => {
 
           {/* Footer */}
           <div className="text-center mt-6">
-            <p className="text-gray-400">
+            <p className="text-gray-400 font-inter">
               Don't have an account?{' '}
               <button
                 onClick={() => navigate('/signup')}
@@ -121,7 +120,7 @@ const Login = () => {
         <div className="text-center mt-6">
           <button
             onClick={() => navigate('/')}
-            className="text-gray-400 hover:text-yellow-600 transition-colors"
+            className="text-gray-400 hover:text-yellow-600 transition-colors font-inter"
           >
             ← Back to Home
           </button>

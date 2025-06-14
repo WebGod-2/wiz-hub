@@ -150,9 +150,9 @@ const Challenges = () => {
           {/* Clan Info */}
           <div className="flex-1">
             <div className="flex justify-between items-start mb-6">
-              <h3 className="text-5xl font-bold text-amber-300 mb-4 tracking-wider">{clan.name}</h3>
+              <h3 className="text-5xl font-bold text-amber-300 mb-4 tracking-wider font-cinzel">{clan.name}</h3>
               <div className="text-right">
-                <span className="text-amber-300 text-2xl font-bold">XP: {clan.xp}</span>
+                <span className="text-amber-300 text-2xl font-bold font-inter">XP: {clan.xp}</span>
               </div>
             </div>
 
@@ -161,13 +161,13 @@ const Challenges = () => {
               {clan.president && (
                 <div className="flex items-center space-x-4">
                   <Crown className="w-6 h-6 text-amber-400" />
-                  <span className="text-amber-300 text-lg font-semibold">President</span>
+                  <span className="text-amber-300 text-lg font-semibold font-inter">President</span>
                   <div className="flex items-center space-x-3">
                     <Crown className="w-5 h-5 text-amber-400" />
                     <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-amber-500 shadow-lg">
                       <img src={clan.president.avatar} alt="President" className="w-full h-full object-cover" />
                     </div>
-                    <span className="text-amber-100 text-lg font-medium">President</span>
+                    <span className="text-amber-100 text-lg font-medium font-inter">President</span>
                   </div>
                 </div>
               )}
@@ -175,7 +175,7 @@ const Challenges = () => {
               {clan.vicePresident && (
                 <div className="flex items-center space-x-4">
                   <Shield className="w-6 h-6 text-amber-400" />
-                  <span className="text-amber-300 text-lg font-semibold">Vice President</span>
+                  <span className="text-amber-300 text-lg font-semibold font-inter">Vice President</span>
                   <div className="w-14 h-14 rounded-full overflow-hidden border-3 border-amber-400">
                     <img src={clan.vicePresident.avatar} alt="Vice President" className="w-full h-full object-cover" />
                   </div>
@@ -190,7 +190,7 @@ const Challenges = () => {
           {clan.actions.map((action, index) => (
             <Button
               key={index}
-              className={`px-12 py-4 rounded-xl text-lg font-bold tracking-wider transition-all duration-300 shadow-lg ${
+              className={`px-12 py-4 rounded-xl text-lg font-bold tracking-wider transition-all duration-300 shadow-lg font-inter ${
                 action === 'Fight' 
                   ? 'bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-600 hover:to-blue-700 text-white border-4 border-blue-500' 
                   : action === 'Surrender'
@@ -227,10 +227,10 @@ const Challenges = () => {
 
       {/* Clan Header */}
       <div className="flex justify-between items-start mb-6">
-        <h3 className="text-3xl font-bold text-amber-300 tracking-wide">{clan.name}</h3>
+        <h3 className="text-3xl font-bold text-amber-300 tracking-wide font-cinzel">{clan.name}</h3>
         <div className="flex items-center space-x-2">
           <Crown className="w-5 h-5 text-amber-400" />
-          <span className="text-amber-300 text-xl font-bold">{clan.xp}</span>
+          <span className="text-amber-300 text-xl font-bold font-inter">{clan.xp}</span>
         </div>
       </div>
 
@@ -239,13 +239,13 @@ const Challenges = () => {
         <div className="flex items-center justify-between">
           {clan.president && (
             <div className="flex items-center space-x-3">
-              <span className="text-amber-300 text-sm font-semibold">President</span>
+              <span className="text-amber-300 text-sm font-semibold font-inter">President</span>
               <Crown className="w-4 h-4 text-amber-400" />
             </div>
           )}
           {clan.vicePresident && (
             <div className="flex items-center space-x-3">
-              <span className="text-amber-300 text-sm font-semibold">Vice President</span>
+              <span className="text-amber-300 text-sm font-semibold font-inter">Vice President</span>
               <Shield className="w-4 h-4 text-amber-400" />
             </div>
           )}
@@ -276,7 +276,7 @@ const Challenges = () => {
         {clan.actions.map((action, index) => (
           <Button
             key={index}
-            className="w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-transparent border-3 border-amber-500 text-amber-300 hover:bg-amber-600 hover:text-black shadow-lg"
+            className="w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 bg-transparent border-3 border-amber-500 text-amber-300 hover:bg-amber-600 hover:text-black shadow-lg font-inter"
             style={{
               boxShadow: '0 4px 15px rgba(217, 119, 6, 0.3)'
             }}
@@ -289,7 +289,7 @@ const Challenges = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative font-inter">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
@@ -307,10 +307,10 @@ const Challenges = () => {
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
             <div className="flex items-center space-x-2">
               <Star className="w-8 h-8 text-yellow-600" />
-              <span className="text-2xl font-bold text-yellow-600">WizLearn</span>
+              <span className="text-2xl font-bold text-yellow-600 font-cinzel">WizLearn</span>
             </div>
             
-            <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base">
+            <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base font-inter">
               <button onClick={() => navigate('/home')} className="text-gray-300 hover:text-yellow-600 transition-colors">Home</button>
               <button onClick={() => navigate('/subjects')} className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</button>
               <button onClick={() => navigate('/clans')} className="text-gray-300 hover:text-yellow-600 transition-colors">Clans</button>
@@ -322,9 +322,9 @@ const Challenges = () => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <span className="text-gray-300 hidden sm:block text-sm md:text-base">Welcome, {user?.name}!</span>
+            <span className="text-gray-300 hidden sm:block text-sm md:text-base font-inter">Welcome, {user?.name}!</span>
             <div className="w-8 h-8 md:w-10 md:h-10 bg-yellow-600 rounded-full flex items-center justify-center">
-              <span className="text-black font-bold text-sm md:text-base">{user?.name?.charAt(0) || 'U'}</span>
+              <span className="text-black font-bold text-sm md:text-base font-inter">{user?.name?.charAt(0) || 'U'}</span>
             </div>
             <Button
               onClick={handleLogout}
@@ -341,7 +341,7 @@ const Challenges = () => {
       {/* Main Content */}
       <main className="relative z-10 p-4 md:p-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-bold text-amber-300 mb-12 text-center tracking-wider">Clan Challenges</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-amber-300 mb-12 text-center tracking-wider font-cinzel">Clan Challenges</h1>
           
           {/* Main Clan Card */}
           <div className="mb-8">

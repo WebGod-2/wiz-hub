@@ -29,7 +29,7 @@ const Leaderboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative font-inter">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -47,10 +47,10 @@ const Leaderboard = () => {
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
             <div className="flex items-center space-x-2">
               <Star className="w-8 h-8 text-yellow-600" />
-              <span className="text-2xl font-bold text-yellow-600">WizLearn</span>
+              <span className="text-2xl font-bold text-yellow-600 font-cinzel">WizLearn</span>
             </div>
             
-            <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base">
+            <nav className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-6 text-sm md:text-base font-inter">
               <button onClick={() => navigate('/home')} className="text-gray-300 hover:text-yellow-600 transition-colors">Home</button>
               <button onClick={() => navigate('/subjects')} className="text-gray-300 hover:text-yellow-600 transition-colors">Subjects</button>
               <button onClick={() => navigate('/clans')} className="text-gray-300 hover:text-yellow-600 transition-colors">Clans</button>
@@ -62,9 +62,9 @@ const Leaderboard = () => {
           </div>
           
           <div className="flex items-center space-x-4">
-            <span className="text-gray-300 hidden sm:block text-sm md:text-base">Welcome, {user?.name}!</span>
+            <span className="text-gray-300 hidden sm:block text-sm md:text-base font-inter">Welcome, {user?.name}!</span>
             <div className="w-8 h-8 md:w-10 md:h-10 bg-yellow-600 rounded-full flex items-center justify-center">
-              <span className="text-black font-bold text-sm md:text-base">{user?.name?.charAt(0) || 'U'}</span>
+              <span className="text-black font-bold text-sm md:text-base font-inter">{user?.name?.charAt(0) || 'U'}</span>
             </div>
             <Button
               onClick={handleLogout}
@@ -81,19 +81,19 @@ const Leaderboard = () => {
       {/* Main Content */}
       <main className="relative z-10 p-4 md:p-6">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-8">Leaderboard</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-yellow-600 mb-8 font-cinzel">Leaderboard</h1>
           
           {/* Tabs */}
           <div className="flex gap-4 mb-8">
             <Button 
               onClick={() => setActiveTab('Class')}
-              className={`px-8 py-3 ${activeTab === 'Class' ? 'bg-yellow-600 text-black' : 'bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black'} transition-all duration-300`}
+              className={`px-8 py-3 font-inter ${activeTab === 'Class' ? 'bg-yellow-600 text-black' : 'bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black'} transition-all duration-300`}
             >
               Class
             </Button>
             <Button 
               onClick={() => setActiveTab('Overall')}
-              className={`px-8 py-3 ${activeTab === 'Overall' ? 'bg-yellow-600 text-black' : 'bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black'} transition-all duration-300`}
+              className={`px-8 py-3 font-inter ${activeTab === 'Overall' ? 'bg-yellow-600 text-black' : 'bg-transparent border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-black'} transition-all duration-300`}
             >
               Overall
             </Button>
@@ -111,12 +111,12 @@ const Leaderboard = () => {
                         {IconComponent ? (
                           <IconComponent className={`w-6 h-6 ${item.rank === 1 ? 'text-yellow-500' : 'text-gray-400'}`} />
                         ) : (
-                          <span className="text-gray-400 text-lg font-bold">{item.rank}</span>
+                          <span className="text-gray-400 text-lg font-bold font-inter">{item.rank}</span>
                         )}
                       </div>
-                      <span className="text-white text-lg font-medium">{item.name}</span>
+                      <span className="text-white text-lg font-medium font-inter">{item.name}</span>
                     </div>
-                    <span className="text-white text-lg font-bold">{item.points}</span>
+                    <span className="text-white text-lg font-bold font-inter">{item.points}</span>
                   </div>
                 );
               })}
